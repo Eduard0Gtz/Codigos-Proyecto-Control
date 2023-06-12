@@ -6,7 +6,7 @@ int Vo;
 float R1 = 10000;
 float logR2, R2, T;
 float c1 = 1.009249522e-03, c2 = 2.378405444e-04, c3 = 2.019202697e-07;
-
+int count=0;
 
 void setup()
  {
@@ -27,7 +27,7 @@ void loop()
   T = T - 273.15;
   ////////////////////////////////////7
 
-     if (T<=185){
+     if (T<=150){
        //Serial.println("Encender");
        digitalWrite(RELAY1,LOW); // This will Turn ON the relay 1
        }else{
@@ -35,10 +35,18 @@ void loop()
          //Serial.println("Apagar");
        }
 
-       Serial.print("Temperature: "); 
-       Serial.print(T);
-       Serial.println(" C"); 
-       delay(500);
+       //Serial.print("Temperature: "); 
+    
+       if (count<=23){
+       Serial.println(T);
+       count=count+1;
+       }else{
+         Serial.println("******************************");
+         Serial.println(T);
+         count=0;
+       }
+       //Serial.println(" C"); 
+       delay(1000);
 
    }
 
